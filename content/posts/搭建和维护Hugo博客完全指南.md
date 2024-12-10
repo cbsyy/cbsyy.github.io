@@ -6,7 +6,6 @@ tags: ["Hugo", "博客", "教程", "GitHub Pages"]
 categories: ["技术文档"]
 ---
 
-# 搭建和维护Hugo博客完全指南
 
 本文将详细介绍如何使用Hugo和GitHub Pages搭建个人博客，以及如何进行日常维护和内容更新。这是一份完整的操作手册，适合收藏参考。
 
