@@ -2,37 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/posts/my-first-post/</loc>
-    <lastmod>2024-12-10T10:23:57+08:00</lastmod>
+    <loc>https://cbsyy.github.io/</loc>
+    <lastmod>2024-12-10T13:33:51+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/</loc>
-    <lastmod>2024-12-10T10:23:57+08:00</lastmod>
+    <loc>https://cbsyy.github.io/posts/</loc>
+    <lastmod>2024-12-10T13:33:51+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/</loc>
-    <lastmod>2024-12-10T10:23:57+08:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://cbsyy.github.io/categories/</loc>
     <lastmod>2024-12-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/github-pages/</loc>
+    <loc>https://cbsyy.github.io/tags/github-pages/</loc>
     <lastmod>2024-12-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/hugo/</loc>
+    <loc>https://cbsyy.github.io/tags/hugo/</loc>
     <lastmod>2024-12-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://cbsyy.github.io/tags/</loc>
     <lastmod>2024-12-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/%E5%8D%9A%E5%AE%A2/</loc>
+    <loc>https://cbsyy.github.io/tags/%E5%8D%9A%E5%AE%A2/</loc>
     <lastmod>2024-12-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/</loc>
+    <loc>https://cbsyy.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/</loc>
     <lastmod>2024-12-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/hugo-blog-guide/</loc>
+    <loc>https://cbsyy.github.io/posts/hugo-blog-guide/</loc>
     <lastmod>2024-12-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/%E6%95%99%E7%A8%8B/</loc>
+    <loc>https://cbsyy.github.io/tags/%E6%95%99%E7%A8%8B/</loc>
     <lastmod>2024-12-10T00:00:00+00:00</lastmod>
   </url>
 </urlset>
