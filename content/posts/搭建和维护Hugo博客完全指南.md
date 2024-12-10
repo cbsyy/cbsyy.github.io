@@ -269,6 +269,20 @@ git push origin main
 ./publish.sh "新文章：XXX"
 ```
 
+
+更新：
+# 在博客根目录下
+git add .
+git commit -m "添加所有文章"
+git push origin main
+
+-------------------------------
+
+# 修改文章后
+git add content/posts/文章名.md
+git commit -m "更新文章：xxx"
+git push origin main
+
 ## 十、结语
 
 本指南涵盖了Hugo博客的基础搭建和日常维护的主要方面。随着使用的深入，你可以根据需要扩展和优化这些流程。记得定期备份你的内容，并保持主题和Hugo版本的更新。
