@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>技术教程 on My New Hugo Site</title>
+    <link>http://localhost:1313/categories/%E6%8A%80%E6%9C%AF%E6%95%99%E7%A8%8B/</link>
+    <description>Recent content in 技术教程 on My New Hugo Site</description>
+    <generator>Hugo -- 0.139.3</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 10 Feb 2024 15:30:00 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/%E6%8A%80%E6%9C%AF%E6%95%99%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>从零开始搭建个人博客全流程指南</title>
+      <link>http://localhost:1313/posts/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%85%A8%E6%B5%81%E7%A8%8B%E6%8C%87%E5%8D%97/</link>
+      <pubDate>Sat, 10 Feb 2024 15:30:00 +0800</pubDate>
+      <guid>http://localhost:1313/posts/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%85%A8%E6%B5%81%E7%A8%8B%E6%8C%87%E5%8D%97/</guid>
+      <description>详细记录使用 Hugo 搭建个人博客的完整过程，包含环境配置、部署步骤、常见问题解决方案等</description>
+    </item>
+  </channel>
+</rss>

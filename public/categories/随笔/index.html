@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>教程 | My New Hugo Site</title>
+<title>随笔 | My New Hugo Site</title>
 <meta name="keywords" content="">
 <meta name="description" content="">
 <meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/tags/%E6%95%99%E7%A8%8B/">
+<link rel="canonical" href="http://localhost:1313/categories/%E9%9A%8F%E7%AC%94/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.d72444526d7ecbdb0015438a7fa89054a658bf759d0542e2e5df81ce94b493ee.css" integrity="sha256-1yREUm1&#43;y9sAFUOKf6iQVKZYv3WdBULi5d&#43;BzpS0k&#43;4=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
@@ -18,8 +18,8 @@
 <link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/tags/%E6%95%99%E7%A8%8B/index.xml">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/tags/%E6%95%99%E7%A8%8B/">
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/categories/%E9%9A%8F%E7%AC%94/index.xml">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/categories/%E9%9A%8F%E7%AC%94/">
 <noscript>
     <style>
         #theme-toggle,
@@ -118,39 +118,24 @@
     </nav>
 </header>
 <main class="main"> 
-<header class="page-header"><div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/tags/">Tags</a></div>
+<header class="page-header"><div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/categories/">Categories</a></div>
   <h1>
-    教程
+    随笔
   </h1>
 </header>
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">搭建和维护Hugo博客完全指南
+    <h2 class="entry-hint-parent">我的第一篇博客文章
     </h2>
   </header>
   <div class="entry-content">
-    <p>本文将详细介绍如何使用Hugo和GitHub Pages搭建个人博客，以及如何进行日常维护和内容更新。这是一份完整的操作手册，适合收藏参考。
-一、初始环境搭建 1.1 安装必要工具 首先需要安装以下工具：
-# macOS用户 brew install hugo brew install git # Windows用户 choco install hugo-extended # 安装Git：从 https://git-scm.com/download/win 下载安装 1.2 验证安装 hugo version git --version 二、创建Hugo站点 2.1 基础站点创建 # 创建新站点 hugo new site my-blog cd my-blog # 初始化Git仓库 git init 2.2 主题安装 # 添加主题（以hugo-coder为例） git submodule add https://github.com/luizdepra/hugo-coder.git themes/hugo-coder # 修改config.toml配置主题 echo &#39;theme = &#34;hugo-coder&#34;&#39; &gt;&gt; config.toml 三、配置文件详解 3.1 基础配置 (config.toml) baseURL = &#39;https://你的用户名.github.io/&#39; languageCode = &#39;zh-cn&#39; title = &#39;我的博客&#39; theme = &#39;hugo-coder&#39; # 其他常用配置 [params] author = &#34;你的名字&#34; info = &#34;个人介绍&#34; description = &#34;个人博客&#34; keywords = &#34;blog,developer,personal&#34; [taxonomies] category = &#34;categories&#34; tag = &#34;tags&#34; series = &#34;series&#34; 四、文章管理 4.1 创建新文章 # 创建新文章 hugo new posts/my-first-post.md 4.2 文章前置配置 每篇文章开头都需要包含以下信息：
-...</p>
+    <p>这是我的第一篇博客文章！
+关于我 在大哥启发下、 学会了创建blog 开心的！！！…
+我的计划 分享有趣的想法 记录学习过程 结识志同道合的朋友 </p>
   </div>
-  <footer class="entry-footer"><span title='2024-12-10 00:00:00 +0000 UTC'>December 10, 2024</span>&nbsp;·&nbsp;2 min</footer>
-  <a class="entry-link" aria-label="post link to 搭建和维护Hugo博客完全指南" href="http://localhost:1313/posts/%E6%90%AD%E5%BB%BA%E5%92%8C%E7%BB%B4%E6%8A%A4hugo%E5%8D%9A%E5%AE%A2%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">从零开始搭建个人博客全流程指南
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>前言 搭建个人博客不仅是记录和分享知识的好方式，也是提升个人技术能力的绝佳机会。本文将详细记录使用 Hugo 搭建个人博客的完整流程，包括从环境准备到部署发布的每一个步骤，以及途中遇到的各种问题和解决方案。
-环境准备 必要工具 Git（版本控制） Hugo（静态网站生成器） 代码编辑器（推荐 VS Code） GitHub 账号 安装步骤 1. 安装 Git Windows：从 Git 官网 下载安装包 验证安装： git --version 2. 安装 Hugo Windows：使用 Chocolatey choco install hugo -confirm 或使用 Scoop： scoop install hugo-extended 验证安装： hugo version 创建博客 1. 初始化站点 hugo new site myblog cd myblog 2. 添加主题 # 添加主题作为 git 子模块 git init git submodule add https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/ananke # 在配置文件中设置主题 echo &#34;theme = &#39;ananke&#39;&#34; &gt;&gt; config.toml 3. 配置博客 编辑 config.toml：
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2024-02-10 15:30:00 +0800 CST'>February 10, 2024</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Your Name</footer>
-  <a class="entry-link" aria-label="post link to 从零开始搭建个人博客全流程指南" href="http://localhost:1313/posts/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%85%A8%E6%B5%81%E7%A8%8B%E6%8C%87%E5%8D%97/"></a>
+  <footer class="entry-footer"><span title='2024-12-10 00:00:00 +0000 UTC'>December 10, 2024</span>&nbsp;·&nbsp;1 min</footer>
+  <a class="entry-link" aria-label="post link to 我的第一篇博客文章" href="http://localhost:1313/posts/%E7%AC%AC%E4%B8%80%E7%AF%87blog/"></a>
 </article>
     </main>
     
