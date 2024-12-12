@@ -126,6 +126,64 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">RAG系统向量检索优化之元数据集合存储查询方案分析
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>初始设计思路解析 为什么选择三文件结构？ 我们采用三个JSON文件（chunks.json、structure.json、metadata.json）的设计，主要基于以下考虑：
+关注点分离 chunks.json专注于内容存储，避免了数据结构的复杂性 structure.json独立维护文档关系，便于结构调整和更新 metadata.json集中管理元信息，简化了文件管理 优化存储效率 不同类型的数据有不同的更新频率，分离存储可以优化更新操作 按需加载数据，避免全量数据加载 便于实现数据的增量更新 便于扩展 可以独立扩展每个文件的数据结构 便于添加新的数据类型 支持灵活的存储迁移 初始问题的深入分析 多集合查询效率问题 当我们采用串行查询不同集合的方案时，实际面临三个层次的挑战：
+时间开销问题 每个集合查询都需要完整的向量计算过程 串行查询导致响应时间随集合数量线性增长 无法预知需要查询多少个集合才能找到答案 资源利用问题 CPU资源未充分利用 内存使用效率低 缺乏并行处理能力 可扩展性问题 新增集合会直接影响整体性能 难以应对数据规模增长 缺乏动态调整能力 优化方案的深度解析 第一步：建立集合索引的深入探讨 为什么需要集合索引？ 传统的逐个查询方法相当于在没有地图的情况下盲目搜索 集合索引相当于建立了一个导航系统 可以快速定位最可能包含答案的集合 如何建立有效的集合索引？ class CollectionIndexer: def __init__(self): # 使用轻量级模型，平衡效率和效果 self.embedding_model = SentenceTransformer(&#39;all-MiniLM-L6-v2&#39;) def build_collection_profile(self, collection): # 抽取集合特征 samples = self._select_representative_samples(collection) embeddings = self._compute_embeddings(samples) # 构建集合特征向量 collection_vector = self._aggregate_embeddings(embeddings) # 提取关键词和主题 keywords = self._extract_keywords(samples) topics = self._identify_topics(samples) return { &#39;vector&#39;: collection_vector, &#39;keywords&#39;: keywords, &#39;topics&#39;: topics } 索引方案的优势 查询前预先知道搜索方向，避免盲目查询 可以快速排除不相关的集合 支持语义级别的集合匹配 第二步：分层检索的实现细节 为什么采用两层架构？ 单层检索无法平衡效率和准确性 两层架构可以实现粗排和精排的结合 符合人类寻找信息的直觉过程 具体实现方案 class TwoStageSearcher: def __init__(self, collection_index, similarity_threshold=0.75): self.index = collection_index self.threshold = similarity_threshold async def search(self, query): # 第一阶段：集合选择 relevant_collections = await self._route_query(query) # 第二阶段：并行精确搜索 results = await self._parallel_search(query, relevant_collections) return self._merge_results(results) async def _route_query(self, query): # 快速路由，使用轻量级向量计算 query_vector = self.compute_query_vector(query) matches = self.index.find_similar_collections( query_vector, self.threshold ) return matches 分层检索的优势 显著减少需要精确搜索的数据量 保持高召回的同时提升精度 便于进行性能优化和调整 第三步：缓存机制的设计考量 为什么需要多级缓存？ 不同类型的数据有不同的访问模式 不同的缓存策略适用于不同场景 多级缓存可以优化不同层次的性能瓶颈 缓存策略的具体实现 class MultiLevelCache: def __init__(self): # 路由结果缓存：高频查询的路由结果 self.route_cache = TTLCache(maxsize=1000, ttl=3600) # 特征缓存：集合的特征表示 self.feature_cache = LRUCache(maxsize=100) # 结果缓存：完整的查询结果 self.result_cache = ExpiringCache( max_age=300, # 5分钟过期 max_size=5000 ) def _create_cache_key(self, query, context=None): # 生成考虑上下文的缓存键 components = [query] if context: components.extend(sorted(context.items())) return hashlib.md5(str(components).encode()).hexdigest() 缓存机制的优势 减少重复计算 降低系统负载 提升响应速度 支持热点数据快速访问 第四步：并行化处理的深入解析 为什么需要并行处理？ 现代硬件普遍支持并行计算 串行处理无法充分利用系统资源 并行化可以显著提升吞吐量 并行处理的实现策略 class ParallelSearchExecutor: def __init__(self, max_workers=10, timeout=0.5): self.executor = ThreadPoolExecutor(max_workers=max_workers) self.timeout = timeout async def execute_parallel_search(self, query, collections): tasks = [] for collection in collections: task = asyncio.create_task( self._search_with_timeout(query, collection) ) tasks.append(task) # 设置超时控制 done, pending = await asyncio.wait( tasks, timeout=self.timeout, return_when=asyncio.FIRST_COMPLETED ) # 处理完成的任务 results = [] for task in done: try: result = await task if result: results.append(result) except Exception as e: logger.error(f&#34;Search error: {e}&#34;) # 取消未完成的任务 for task in pending: task.cancel() return results 并行化的优势 充分利用系统资源 显著减少总体响应时间 提高系统的吞吐能力 支持更灵活的任务调度 持续优化的具体方向 1. 动态学习系统的设计 为什么需要动态学习？ 用户查询模式会随时间变化 不同时段可能有不同的查询特点 系统需要适应这些变化 实现思路 class AdaptiveLearner: def __init__(self): self.pattern_collector = QueryPatternCollector() self.performance_monitor = PerformanceMonitor() def learn_from_query(self, query, result, metrics): # 收集查询模式 self.pattern_collector.add_query(query) # 记录性能指标 self.performance_monitor.record_metrics(metrics) # 定期分析和调整 if self._should_update(): self._update_strategies() 动态学习的优势 系统可以自适应调整 性能会随时间推移而提升 能够应对查询模式的变化 2. 智能化优化的具体方向 路由层优化 引入更复杂的匹配算法 支持上下文感知的路由 实现自适应的阈值调整 检索策略优化 动态调整并行度 智能控制超时时间 自适应的资源分配 参数调优 基于历史数据的自动调参 A/B测试支持 性能指标的实时监控 实战经验总结 循序渐进的优化原则 先解决最急迫的问题 每次优化要可度量 保持系统的可维护性 性能与可用性的平衡 合理设置超时时间 适度使用缓存 保持系统的稳定性 可扩展性设计 预留系统扩展接口 支持平滑的容量扩展 考虑未来的演进需求 这种深入的分析和实现细节，不仅帮助我们理解了每个优化步骤的必要性，也为实际实现提供了具体的指导。在实践中，我们可以根据具体场景和需求，选择性地实现这些优化方案，并进行相应的调整。
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-12-12 11:16:25 +0800 CST'>December 12, 2024</span>&nbsp;·&nbsp;2 min</footer>
+  <a class="entry-link" aria-label="post link to RAG系统向量检索优化之元数据集合存储查询方案分析" href="http://localhost:1313/posts/%E5%85%83%E6%95%B0%E6%8D%AE%E9%9B%86%E5%90%88%E5%AD%98%E5%82%A8%E6%9F%A5%E8%AF%A2%E6%96%B9%E6%A1%88%E5%88%86%E6%9E%90/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">优雅解决Markdown转PDF：一次文档工程的探索之旅
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>缘起 最近遇到一个有趣的挑战：团队需要将大量Markdown文档转换为PDF格式，看似简单的需求背后却暗藏玄机。经过一番探索，我发现这是一个值得深入研究的文档工程问题。
+项目洞察 在开始动手之前，我们先明确几个核心问题：
+如何保持文档的结构完整性？ 中文排版如何做到专业水准？ 样式定制要兼顾灵活性和一致性 批量处理时如何保证性能？ 技术方案 经过评估，我选择了这套技术栈：
+Python：强大的文本处理能力 ReportLab：专业的PDF生成引擎 BeautifulSoup：精确的HTML解析 正则表达式：灵活的文本处理 这个选择的妙处在于：每个组件都专注于自己的领域，又能完美协同工作。
+核心设计 智能文档预处理 def process_content(md_content): &#34;&#34;&#34;文档预处理：这是整个系统的第一道防线 - 确保标题段落结构清晰 - 智能处理中文排版规则 - 优化图文混排效果 &#34;&#34;&#34; # 处理标题层级 md_content = re.sub(r&#39;(#&#43;.*)\n(?!\n)&#39;, r&#39;\1\n\n&#39;, md_content) # 优化段落间距 md_content = re.sub(r&#39;\n(?!\n)&#39;, &#39;\n\n&#39;, md_content) # 处理图文混排 md_content = re.sub(r&#39;(?&lt;!\\n)!\[&#39;, &#39;\n\n![&#39;, md_content) return md_content 中文排版引擎 def create_chinese_styles(): &#34;&#34;&#34;中文排版的精髓： - 优雅的字体搭配 - 合理的行距控制 - 精准的缩进处理 &#34;&#34;&#34; styles = getSampleStyleSheet() # 中文标题样式 styles.add(ParagraphStyle( name=&#39;ChineseTitle&#39;, fontName=&#39;SimHei&#39;, fontSize=16, leading=20, alignment=0, # 左对齐符合中文习惯 spaceBefore=12, spaceAfter=12 )) # 中文正文样式 styles.add(ParagraphStyle( name=&#39;ChineseBody&#39;, fontName=&#39;SimSun&#39;, fontSize=12, leading=18, firstLineIndent=24, # 首行缩进两字符 alignment=4 # 两端对齐 )) return styles 图片智能处理 def optimize_image(image_path, target_width=None): &#34;&#34;&#34;图片处理的关键点： - 智能缩放 - 清晰度保持 - 内存优化 &#34;&#34;&#34; img = Image.open(image_path) if target_width and img.width &gt; target_width: ratio = target_width / img.width new_size = (target_width, int(img.height * ratio)) img = img.resize(new_size, Image.LANCZOS) return img 实用技巧 在实践中，我总结出几个特别有效的技巧：
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-12-11 19:41:21 +0800 CST'>December 11, 2024</span>&nbsp;·&nbsp;1 min</footer>
+  <a class="entry-link" aria-label="post link to 优雅解决Markdown转PDF：一次文档工程的探索之旅" href="http://localhost:1313/posts/%E6%9C%AA%E6%9D%A5%E5%B1%95%E6%9C%9B/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent"> 智能文档元数据助手全方位指南：从入门到实践
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>引言 在数字化转型的浪潮中，企业面临着海量文档管理和知识检索的挑战。如何让文档&#34;活&#34;起来？如何快速准确地找到所需信息？让我们一起探索构建智能文档助手的奥秘。
+一、认识智能文档助手 1.1 什么是智能文档助手？ 智能文档助手是一个融合了多项AI技术的系统，它能：
+理解文档内容和结构 快速检索相关信息 提供准确的问答服务 持续学习和优化 1.2 为什么需要它？ 想象这些场景：
+新员工培训：快速掌握产品知识 客服工作：准确回答用户问题 技术支持：精确定位解决方案 知识管理：高效组织和利用信息 传统方法的局限：
+关键词搜索不够智能 上下文理解能力弱 答案需要人工整理 知识难以有效传承 二、系统架构设计 2.1 整体架构 文档输入 → 处理管道 → 向量存储 → 智能问答 ↓ ↓ ↓ ↓ Word文档 → 文本分块 → 向量化 → 语义检索 ↓ ↓ ↓ 结构化数据 → 索引建立 → LLM应答 2.2 核心组件 文档处理器
+解析各类文档 提取文档结构 生成元数据 向量引擎
+文本向量化 相似度计算 快速检索 问答系统
+上下文理解 智能匹配 答案生成 三、技术实现详解 3.1 智能文档处理 文档结构识别 class DocumentSection: &#34;&#34;&#34;文档章节信息&#34;&#34;&#34; def __init__(self, level: int, title: str, content: str, parent_titles: List[str]): self.level = level # 章节层级 self.title = title # 章节标题 self.content = content # 章节内容 self.parent_titles = parent_titles # 父级章节 智能分块策略 def create_smart_chunks(text: str, metadata: Dict) -&gt; List[Dict]: &#34;&#34;&#34;智能文本分块&#34;&#34;&#34; splitter = RecursiveCharacterTextSplitter( chunk_size=500, # 块大小 chunk_overlap=50, # 重叠长度 separators=[&#34;\n\n&#34;, &#34;\n&#34;, &#34;。&#34;, &#34;！&#34;, &#34;？&#34;, &#34;，&#34;, &#34; &#34;, &#34;&#34;] ) chunks = splitter.create_documents( texts=[text], metadatas=[metadata] ) return [{&#34;chunk_id&#34;: f&#34;{metadata[&#39;doc_id&#39;]}_chunk_{i}&#34;, &#34;content&#34;: chunk.page_content, &#34;metadata&#34;: {**chunk.metadata, &#34;chunk_index&#34;: i}} for i, chunk in enumerate(chunks)] 3.2 元数据管理系统 元数据结构 metadata_system = { &#34;document_level&#34;: { &#34;file_info&#34;: { &#34;name&#34;: &#34;product_manual_v2.docx&#34;, &#34;path&#34;: &#34;/docs/manuals/&#34;, &#34;created_at&#34;: &#34;2024-01-01T10:00:00&#34; }, &#34;document_info&#34;: { &#34;title&#34;: &#34;产品使用手册&#34;, &#34;version&#34;: &#34;2.0&#34;, &#34;department&#34;: &#34;技术部&#34; } }, &#34;section_level&#34;: { &#34;structure&#34;: { &#34;level&#34;: 2, &#34;title&#34;: &#34;1.1 系统概述&#34;, &#34;parent_title&#34;: &#34;第一章 简介&#34; } }, &#34;chunk_level&#34;: { &#34;location&#34;: { &#34;section_id&#34;: &#34;section_1_1&#34;, &#34;chunk_index&#34;: 2 } } } 3.3 向量化与检索 向量转换 class VectorConverter: def __init__(self, model_name: str = &#34;BAAI/bge-large-zh-v1.5&#34;): self.model = SentenceTransformer(model_name) def batch_encode(self, texts: List[str], batch_size: int = 32) -&gt; List[List[float]]: return self.model.encode( texts, batch_size=batch_size, normalize_embeddings=True, convert_to_tensor=True ).tolist() 智能检索 def semantic_search(self, query: str, filters: Dict = None) -&gt; List[Dict]: # 1. 向量检索 query_vector = self.vector_converter.encode([query])[0] base_results = self.vector_store.similarity_search( query_vector, top_k=5 ) # 2. 结果优化 if filters: filtered_results = [ result for result in base_results if self._match_filters(result[&#39;metadata&#39;], filters) ] return self._rerank_results(filtered_results, query) 3.4 智能问答实现 提示词引擎 class PromptEngine: def generate_prompt(self, query: str, contexts: List[Dict]) -&gt; str: template = &#39;&#39;&#39;基于以下参考信息回答问题： {contexts} 问题: {query} 要求： 1. 基于参考信息 2. 清晰准确 3. 专业用语 4. 易于理解 回答：&#39;&#39;&#39; formatted_contexts = self._format_contexts(contexts) return template.format(contexts=formatted_contexts, query=query) 回答生成 def generate_answer(self, query: str, contexts: List[Dict]) -&gt; Dict: # 1. 生成提示词 prompt = self.prompt_engine.generate_prompt(query, contexts) # 2. 调用大模型 response = self.llm_client.chat.completions.create( model=&#34;glm-4&#34;, messages=[{&#34;role&#34;: &#34;user&#34;, &#34;content&#34;: prompt}] ) # 3. 后处理 return { &#34;answer&#34;: response.choices[0].message.content, &#34;contexts&#34;: contexts, &#34;confidence&#34;: self._calculate_confidence(contexts) } 四、实际应用案例 4.1 客服智能助手 用户：商品退款流程是怎样的？ 助手：根据最新的客服手册，退款流程如下： 1. 提交申请 - 在订单详情页点击&#34;申请退款&#34; - 填写退款原因和说明 - 上传相关凭证 2. 审核处理 - 客服1个工作日内审核 - 通过后3个工作日内退款 - 特殊情况会电话沟通 退款说明： - 原路退回 - 预计7个工作日到账 - 可在订单页查看进度 参考来源：《客服手册2024版》第三章 退款管理 4.2 技术支持助手 工程师：系统日志显示Error 5023，如何处理？ 助手：根据技术文档，Error 5023是数据库连接超时，建议： 1. 立即处理 - 检查数据库连接状态 - 查看网络连接情况 - 确认服务器负载 2. 解决步骤 - 重启数据库服务 - 清理连接池 - 检查连接参数 3. 预防措施 - 定期维护 - 监控告警 - 负载均衡 参考：《系统维护手册》错误码章节 五、系统优化建议 5.1 性能优化 文档处理优化
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-12-10 00:00:00 +0000 UTC'>December 10, 2024</span>&nbsp;·&nbsp;3 min</footer>
+  <a class="entry-link" aria-label="post link to  智能文档元数据助手全方位指南：从入门到实践" href="http://localhost:1313/posts/%E5%85%83%E6%95%B0%E6%8D%AE%E5%88%9B%E5%BB%BA%E5%8F%8A%E5%AD%98%E5%82%A8%E6%9F%A5%E8%AF%A2/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">我的第一篇博客文章
     </h2>
   </header>
@@ -165,26 +223,6 @@
   </div>
   <footer class="entry-footer"><span title='2024-02-10 15:30:00 +0800 CST'>February 10, 2024</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Your Name</footer>
   <a class="entry-link" aria-label="post link to 从零开始搭建个人博客全流程指南" href="http://localhost:1313/posts/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%85%A8%E6%B5%81%E7%A8%8B%E6%8C%87%E5%8D%97/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>智能文档元数据助手全方位指南：从入门到实践 引言 在数字化转型的浪潮中，企业面临着海量文档管理和知识检索的挑战。如何让文档&#34;活&#34;起来？如何快速准确地找到所需信息？让我们一起探索构建智能文档助手的奥秘。
-一、认识智能文档助手 1.1 什么是智能文档助手？ 智能文档助手是一个融合了多项AI技术的系统，它能：
-理解文档内容和结构 快速检索相关信息 提供准确的问答服务 持续学习和优化 1.2 为什么需要它？ 想象这些场景：
-新员工培训：快速掌握产品知识 客服工作：准确回答用户问题 技术支持：精确定位解决方案 知识管理：高效组织和利用信息 传统方法的局限：
-关键词搜索不够智能 上下文理解能力弱 答案需要人工整理 知识难以有效传承 二、系统架构设计 2.1 整体架构 文档输入 → 处理管道 → 向量存储 → 智能问答 ↓ ↓ ↓ ↓ Word文档 → 文本分块 → 向量化 → 语义检索 ↓ ↓ ↓ 结构化数据 → 索引建立 → LLM应答 2.2 核心组件 文档处理器
-解析各类文档 提取文档结构 生成元数据 向量引擎
-文本向量化 相似度计算 快速检索 问答系统
-上下文理解 智能匹配 答案生成 三、技术实现详解 3.1 智能文档处理 文档结构识别 class DocumentSection: &#34;&#34;&#34;文档章节信息&#34;&#34;&#34; def __init__(self, level: int, title: str, content: str, parent_titles: List[str]): self.level = level # 章节层级 self.title = title # 章节标题 self.content = content # 章节内容 self.parent_titles = parent_titles # 父级章节 智能分块策略 def create_smart_chunks(text: str, metadata: Dict) -&gt; List[Dict]: &#34;&#34;&#34;智能文本分块&#34;&#34;&#34; splitter = RecursiveCharacterTextSplitter( chunk_size=500, # 块大小 chunk_overlap=50, # 重叠长度 separators=[&#34;\n\n&#34;, &#34;\n&#34;, &#34;。&#34;, &#34;！&#34;, &#34;？&#34;, &#34;，&#34;, &#34; &#34;, &#34;&#34;] ) chunks = splitter.create_documents( texts=[text], metadatas=[metadata] ) return [{&#34;chunk_id&#34;: f&#34;{metadata[&#39;doc_id&#39;]}_chunk_{i}&#34;, &#34;content&#34;: chunk.page_content, &#34;metadata&#34;: {**chunk.metadata, &#34;chunk_index&#34;: i}} for i, chunk in enumerate(chunks)] 3.2 元数据管理系统 元数据结构 metadata_system = { &#34;document_level&#34;: { &#34;file_info&#34;: { &#34;name&#34;: &#34;product_manual_v2.docx&#34;, &#34;path&#34;: &#34;/docs/manuals/&#34;, &#34;created_at&#34;: &#34;2024-01-01T10:00:00&#34; }, &#34;document_info&#34;: { &#34;title&#34;: &#34;产品使用手册&#34;, &#34;version&#34;: &#34;2.0&#34;, &#34;department&#34;: &#34;技术部&#34; } }, &#34;section_level&#34;: { &#34;structure&#34;: { &#34;level&#34;: 2, &#34;title&#34;: &#34;1.1 系统概述&#34;, &#34;parent_title&#34;: &#34;第一章 简介&#34; } }, &#34;chunk_level&#34;: { &#34;location&#34;: { &#34;section_id&#34;: &#34;section_1_1&#34;, &#34;chunk_index&#34;: 2 } } } 3.3 向量化与检索 向量转换 class VectorConverter: def __init__(self, model_name: str = &#34;BAAI/bge-large-zh-v1.5&#34;): self.model = SentenceTransformer(model_name) def batch_encode(self, texts: List[str], batch_size: int = 32) -&gt; List[List[float]]: return self.model.encode( texts, batch_size=batch_size, normalize_embeddings=True, convert_to_tensor=True ).tolist() 智能检索 def semantic_search(self, query: str, filters: Dict = None) -&gt; List[Dict]: # 1. 向量检索 query_vector = self.vector_converter.encode([query])[0] base_results = self.vector_store.similarity_search( query_vector, top_k=5 ) # 2. 结果优化 if filters: filtered_results = [ result for result in base_results if self._match_filters(result[&#39;metadata&#39;], filters) ] return self._rerank_results(filtered_results, query) 3.4 智能问答实现 提示词引擎 class PromptEngine: def generate_prompt(self, query: str, contexts: List[Dict]) -&gt; str: template = &#39;&#39;&#39;基于以下参考信息回答问题： {contexts} 问题: {query} 要求： 1. 基于参考信息 2. 清晰准确 3. 专业用语 4. 易于理解 回答：&#39;&#39;&#39; formatted_contexts = self._format_contexts(contexts) return template.format(contexts=formatted_contexts, query=query) 回答生成 def generate_answer(self, query: str, contexts: List[Dict]) -&gt; Dict: # 1. 生成提示词 prompt = self.prompt_engine.generate_prompt(query, contexts) # 2. 调用大模型 response = self.llm_client.chat.completions.create( model=&#34;glm-4&#34;, messages=[{&#34;role&#34;: &#34;user&#34;, &#34;content&#34;: prompt}] ) # 3. 后处理 return { &#34;answer&#34;: response.choices[0].message.content, &#34;contexts&#34;: contexts, &#34;confidence&#34;: self._calculate_confidence(contexts) } 四、实际应用案例 4.1 客服智能助手 用户：商品退款流程是怎样的？ 助手：根据最新的客服手册，退款流程如下： 1. 提交申请 - 在订单详情页点击&#34;申请退款&#34; - 填写退款原因和说明 - 上传相关凭证 2. 审核处理 - 客服1个工作日内审核 - 通过后3个工作日内退款 - 特殊情况会电话沟通 退款说明： - 原路退回 - 预计7个工作日到账 - 可在订单页查看进度 参考来源：《客服手册2024版》第三章 退款管理 4.2 技术支持助手 工程师：系统日志显示Error 5023，如何处理？ 助手：根据技术文档，Error 5023是数据库连接超时，建议： 1. 立即处理 - 检查数据库连接状态 - 查看网络连接情况 - 确认服务器负载 2. 解决步骤 - 重启数据库服务 - 清理连接池 - 检查连接参数 3. 预防措施 - 定期维护 - 监控告警 - 负载均衡 参考：《系统维护手册》错误码章节 五、系统优化建议 5.1 性能优化 文档处理优化
-...</p>
-  </div>
-  <footer class="entry-footer">3 min</footer>
-  <a class="entry-link" aria-label="post link to " href="http://localhost:1313/posts/%E5%85%83%E6%95%B0%E6%8D%AE%E5%88%9B%E5%BB%BA%E5%8F%8A%E5%AD%98%E5%82%A8%E6%9F%A5%E8%AF%A2/"></a>
 </article>
     </main>
     
