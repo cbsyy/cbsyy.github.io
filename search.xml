@@ -4,25 +4,136 @@
   
     
     <entry>
-      <title>臭屁语录</title>
-      <link href="/2024/02/06/%E6%B5%8B%E8%AF%95/"/>
-      <url>/2024/02/06/%E6%B5%8B%E8%AF%95/</url>
+      <title>llm面试</title>
+      <link href="/2025/02/08/llm%E9%9D%A2%E8%AF%95/"/>
+      <url>/2025/02/08/llm%E9%9D%A2%E8%AF%95/</url>
       
-        <content type="html"><![CDATA[<p>那咋啦<br>包的呀<br>你管呢<br>你有病<br>死羊驼<br>蠢羊驼</p>]]></content>
+        <content type="html"><![CDATA[<p>通过网盘分享的文件：AI大模型<br>链接: <a href="https://pan.baidu.com/s/1tybsyWsl8TKPD-Vp0JEIsw">https://pan.baidu.com/s/1tybsyWsl8TKPD-Vp0JEIsw</a> 提取码: 1fm2<br>–来自百度网盘超级会员v7的分享</p><p>通过网盘分享的文件：LLMs大模型拆解版本（92个文件）<br>链接: <a href="https://pan.baidu.com/s/1FWbwWmAlaSRhTplVitT3fg">https://pan.baidu.com/s/1FWbwWmAlaSRhTplVitT3fg</a> 提取码: se25<br>–来自百度网盘超级会员v7的分享</p>]]></content>
       
       
-      <categories>
-          
-          <category> 屁话 </category>
-          
-      </categories>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>知识图谱记载</title>
+      <link href="/2025/02/08/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E8%AE%B0%E8%BD%BD/"/>
+      <url>/2025/02/08/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E8%AE%B0%E8%BD%BD/</url>
+      
+        <content type="html"><![CDATA[<p>利用规范化的语义表示（<br>Schema<br>&amp;<br>Ontology<br>）<br>将碎片化的数据关联和融合</p><p>当一个人听到或看到一句话的时候，<br>他使用自己所有的知识和智能去理解。这不仅包括语法，<br>也包括他的词汇知<br>识、<br>上下文知识，<br>更重要的，<br>是对相关事物的理解。</p><p>知识图谱在<br>CV<br>领域有广泛的应用，<br>将视觉识别出的对象链接到外源的知识图<br>谱，<br>可用来辅助图像语义关系抽取和视觉语义的深入理解等。</p><p>机器与机器之间的相互理解和交流沟通需要设备抽象与设备数据语义化<br>终极的万物互联是设备通过规范化的语义进行数据层面的互联</p><p>知识图谱技术源于互联网，<br>最早落地应用的也是搜索引擎、<br>智能问<br>答和推荐计算等技术领域。<br><br>知识图谱通过规范化语义融合多来源数据，<br>并能通过图谱推理能力<br>支持复杂关联数据的挖掘分析，<br>因此在大数据分析领域也有广泛应用。<br><br>不论是语言理解和视觉理解，<br>外源知识库的引入都可以有力的提升<br>语义理解的深度和广度。<br><br>知识图谱在医疗、<br>金融、<br>电商、<br>通信等多个垂直领域都有着广泛的<br>应用，<br>并且每个领域都有其独特的实现和实践方式。</p><p>什么是知识？<br>人类的自然语言，<br>以及创作的绘画和音乐、<br>数学语<br>言、<br>物理模型、<br>化学公式等都是人类知识的表示形<br>式和传承方式。<br>具有获取、<br>表示和处理知识的能力<br>是人类心智区别于其它物种心智的最本质特征，<br>也<br>是人脑智能的最本质特征。</p><p>##何为 知识表示<br>简单而言，<br>知识表示（<br>KR<br>）<br>就是用易于计算机处理的方式来描述人脑的知识的方法。<br><br>KR<br>不是数据格式、<br>不等同于数据结构、<br>也不是编程语言，<br>对于人工智能而言，<br>数据与知识的区别在于<br>KR<br>支持推理。</p><p>知识图谱向量表示：<br>自然语言：<br>为句子中的每个词学一个向量表示<br>•<br>知识图谱：<br>为每个实体和关系学习一个向量表示<br>•<br>图像视频：为视觉中的每个对象学习一个向量表示</p><p>总结（1&#x2F;2）<br><br>知识表示是传统符号人工智能研究的核心，<br>知识表示的方法在早期语义网的<br>发展过程主要用来为知识图谱的概念建模提供理论基础；<br><br>现实的知识图谱项目由于规模化构建的需要，<br>常常降低表示的逻辑严格性，<br>目前较为常见的知识图谱实践包括RDF图模型和属性图模型；<br><br>尽管很多知识图谱并没有应用复杂的知识表示框架，<br>Schema工程对于知识图<br>谱的构建仍然是基础性和必要性的工作，<br>高质量的知识图谱构建通常从<br>Schema设计开始。</p><p>总结（2&#x2F;2）<br><br>在知识图谱的深度利用中，<br>如复杂语义的表达、<br>规则引擎的构建、<br>推理的实现，<br>会对<br>更有丰富表达能力的知识表示方法有更多的需求。<br><br>图模型是更加接近于人脑认知和自然语言的数据模型，<br>RDF作为一种知识图谱表示框<br>架的参考标准，<br>向上对接OWL等更丰富的语义表示和推理能力，<br>向下对接简化后的属<br>性图数据库以及图计算引擎，<br>仍然是最值得重视的知识图谱表示框架。<br><br>知识（图谱）<br>的表示学习是符号表示与神经网络相结合比较自然且有前景的方向。知<br>识的向量表示有利于刻画那些隐含不明确的知识，<br>同时基于神经网络和表示学习实现<br>的推理一定程度上可以解决传统符号推理所面临的鲁棒性不高不容易扩展等众多问题。</p><p>图遍历的查询的物理实现<br>主要优化的点：<br>1.<br>节点的查找，<br>关系的查找<br>2.<br>从节点到关系，<br>从关系到节点<br>3.<br>从关系到关系<br>4.<br>从节点到属性，<br>从关系到属性<br>5.<br>从关系到关系类型。</p><p>属性数据的存储处理：<br>内联与动态存储<br>Ø<br>图数据库中存在大量属性，<br>这些属性的检索与图遍历的计算是分开的，<br>这是为了让节点之间的图遍历能不受大量属性数据的影响。<br>Ø<br>节点和关系的存储记录都包含指向它们的第一个属性ID的指针，<br>属性记录也是固定大小，<br>便于之间通过ID计算获得存储位置。<br>Ø<br>每个属性记录包含多个属性块，<br>以及属性链中下一个属性的ID。<br>Ø<br>每个属性记录包含属性类型以及属性索引文件，<br>属性索引文件存储属性名称。<br>Ø<br>对于每一个属性值，<br>记录包含一个指向动态存储记录的指针（大属性值）或内联值（小属性值）。</p><p>总结：<br>知识图谱存储的选择<br>Ø<br>知识图谱存储方式的选择需要综合考虑性能、动态扩展、实施成本等多方<br>面综合因素。<br>Ø<br>区分原生图存储和非原生图存储：<br>原生图存储在复杂关联查询和图计算方<br>面有性能优势，<br>非原生图存储兼容已有工具集通常学习和协调成本会低。<br>Ø<br>区分RDF图存储和属性图存储：<br>RDF存储一般支持推理，<br>属性图存储通常具<br>有更好的图分析性能优势。<br>Ø<br>在大规模处理情况下，<br>需要考虑与底层大数据存储引擎和上层图计算引擎<br>集成需求。</p><p>总结：<br>关于图模型与图数据库<br>Ø<br>图模型是更加接近于人脑认知和自然语言的数据模型，<br>图数据库是处理复杂的、<br>半结构化、<br>多维度的、<br>紧密关联数据的最好技术。<br>我们鼓励在知识图谱项目中<br>采用和实践图数据库。<br>Ø<br>图数据库有它弱处，<br>假如你的应用场景不包含大量的关联查询，<br>对于简单查询，<br>传统关系模型和NoSQL数据库目前在性能方面更加有优势。<br>Ø<br>RDF作为一种知识图谱表示框架的参考标准，<br>向上对接OWL等更丰富的语义表示<br>和推理能力，<br>向下对接简化后的属性图模型以及图计算引擎，<br>是最值得重视的<br>知识图谱表示框架。</p>]]></content>
+      
       
       
         <tags>
             
-            <tag> 满嘴跑火车 </tag>
+            <tag> 知识图谱 </tag>
             
         </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>工作做事</title>
+      <link href="/2025/02/07/%E5%B7%A5%E4%BD%9C%E5%81%9A%E4%BA%8B/"/>
+      <url>/2025/02/07/%E5%B7%A5%E4%BD%9C%E5%81%9A%E4%BA%8B/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>人工智能论文、书</title>
+      <link href="/2025/02/07/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E8%AE%BA%E6%96%87%E3%80%81%E4%B9%A6/"/>
+      <url>/2025/02/07/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E8%AE%BA%E6%96%87%E3%80%81%E4%B9%A6/</url>
+      
+        <content type="html"><![CDATA[<p>①资料大礼包<br>链接：<a href="https://pan.baidu.com/s/1jxXY1_rtP1yslJTEhYk-sg">https://pan.baidu.com/s/1jxXY1_rtP1yslJTEhYk-sg</a><br>提取码：8gju<br>–来自百度网盘超级会员V1的分享</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>llm资料</title>
+      <link href="/2025/02/07/llm%E8%B5%84%E6%96%99/"/>
+      <url>/2025/02/07/llm%E8%B5%84%E6%96%99/</url>
+      
+        <content type="html"><![CDATA[<p>【 太…完整了！】上海交大和腾讯强强联合的机器学习与深度学习课程分享！-人工智能&#x2F;AI&#x2F;神经网络 链接：<a href="https://pan.baidu.com/s/1Tdo6jCsGoPY4RDGBe_qyjg?pwd=6666">https://pan.baidu.com/s/1Tdo6jCsGoPY4RDGBe_qyjg?pwd=6666</a><br>提取码：6666 </p><p>不能错过的Prompt，适用chatgpt高效撰写学术论文(强烈建议收藏)  链接：<a href="https://pan.baidu.com/s/1wJHb0ZReiKDJPdrSK7-rGA?pwd=pggh">https://pan.baidu.com/s/1wJHb0ZReiKDJPdrSK7-rGA?pwd=pggh</a><br>链接：<a href="https://pan.baidu.com/s/1R0NxwwZUtSGXsFNRU-C78w?pwd=5f8g">https://pan.baidu.com/s/1R0NxwwZUtSGXsFNRU-C78w?pwd=5f8g</a><br>【腾讯文档】50个顶级的ChatGPT学术论文指令<br><a href="https://docs.qq.com/doc/DUURVUmNCZ3FTckdw">https://docs.qq.com/doc/DUURVUmNCZ3FTckdw</a> </p><p><a href="https://help.aliyun.com/zh/pai/use-cases/best-practices-for-fine-tuning-with-nl2bi?spm=a2c4g.11186623.help-menu-30347.d_3_1_2_9.3fc92dc48zKUQf&scm=20140722.H_2845426._.OR_help-T_cn~zh-V_1">https://help.aliyun.com/zh/pai/use-cases/best-practices-for-fine-tuning-with-nl2bi?spm=a2c4g.11186623.help-menu-30347.d_3_1_2_9.3fc92dc48zKUQf&amp;scm=20140722.H_2845426._.OR_help-T_cn~zh-V_1</a><br>微调</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>python资料</title>
+      <link href="/2025/02/07/python%E8%B5%84%E6%96%99/"/>
+      <url>/2025/02/07/python%E8%B5%84%E6%96%99/</url>
+      
+        <content type="html"><![CDATA[<p>【Python基础+爬虫系列视频】_图灵Python教育（仅供个人学习研究）<br>链接：<a href="https://pan.baidu.com/s/1gNgKj6utVGVy6vXGn0J0LQ?pwd=4444">https://pan.baidu.com/s/1gNgKj6utVGVy6vXGn0J0LQ?pwd=4444</a><br>提取码：4444</p><p>基于python 的机器学习神书，包含TensorFlow 2、scikit-learn、scikit-learn、强化学习和最新的代码实践<br> 链接：<a href="https://pan.baidu.com/s/1iTJFYIjj-FYJuw4MQAOeuw?pwd=n7we">https://pan.baidu.com/s/1iTJFYIjj-FYJuw4MQAOeuw?pwd=n7we</a><br>提取码：n7we<br>–来自百度网盘超级会员V2的分享 </p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>docker资料</title>
+      <link href="/2025/02/07/docker%E8%B5%84%E6%96%99/"/>
+      <url>/2025/02/07/docker%E8%B5%84%E6%96%99/</url>
+      
+        <content type="html"><![CDATA[<p>Docker+Linux使用心得链接：<a href="https://pan.baidu.com/s/1OnoBKZuz5PO4J-9f0qbXkg?pwd=3t6j">https://pan.baidu.com/s/1OnoBKZuz5PO4J-9f0qbXkg?pwd=3t6j</a><br>提取码：3t6j</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>强化学习资料</title>
+      <link href="/2025/02/07/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/"/>
+      <url>/2025/02/07/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>知识图谱资料</title>
+      <link href="/2025/02/07/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E8%B5%84%E6%96%99/"/>
+      <url>/2025/02/07/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E8%B5%84%E6%96%99/</url>
+      
+        <content type="html"><![CDATA[<p>膜拜！浙大大牛终于把【知识图谱】讲的如此通透，让人豁然开朗！！链接：<a href="https://pan.baidu.com/s/1cHwbcpxJ5FlHgcZnEuTnnA">https://pan.baidu.com/s/1cHwbcpxJ5FlHgcZnEuTnnA</a><br>提取码：t3op<br>–来自百度网盘超级会员V1的分享</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>linux资料</title>
+      <link href="/2025/02/07/linux%E8%B5%84%E6%96%99/"/>
+      <url>/2025/02/07/linux%E8%B5%84%E6%96%99/</url>
+      
+        <content type="html"><![CDATA[<p>后端程序员必备的Linux基础知识链接: <a href="https://pan.baidu.com/s/1ZF0AJoz6kiRmtr8PpVawbw">https://pan.baidu.com/s/1ZF0AJoz6kiRmtr8PpVawbw</a> 提取码: ygc3</p><p>linux教程资料链接: <a href="https://pan.baidu.com/s/1q5IdFllULADxsX4aq5AU4A?pwd=yk72">https://pan.baidu.com/s/1q5IdFllULADxsX4aq5AU4A?pwd=yk72</a> 提取码: yk72</p>]]></content>
+      
+      
       
     </entry>
     
@@ -86,28 +197,6 @@
     
     
     <entry>
-      <title>about</title>
-      <link href="/about/index.html"/>
-      <url>/about/index.html</url>
-      
-        <content type="html"><![CDATA[<h2 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h2><p>你好，欢迎来到我的博客！</p><h3 id="个人简介"><a href="#个人简介" class="headerlink" title="个人简介"></a>个人简介</h3><ul><li>00后程序员</li><li>热爱技术与分享</li><li>喜欢记录生活点滴</li></ul><h3 id="联系方式"><a href="#联系方式" class="headerlink" title="联系方式"></a>联系方式</h3><ul><li>Email: <a href="mailto:&#x31;&#x38;&#55;&#53;&#x39;&#x31;&#x37;&#50;&#x39;&#53;&#x30;&#x40;&#x31;&#51;&#57;&#46;&#99;&#111;&#x6d;">18759172950@139.com</a></li><li>GitHub: <a href="https://github.com/cbsyy">https://github.com/cbsyy</a></li></ul><h3 id="博客介绍"><a href="#博客介绍" class="headerlink" title="博客介绍"></a>博客介绍</h3><p>这个博客主要用来：</p><ol><li>分享技术心得</li><li>记录学习笔记</li><li>分享生活感悟</li></ol><h3 id="感谢"><a href="#感谢" class="headerlink" title="感谢"></a>感谢</h3><p>感谢使用 <a href="https://hexo.io/">Hexo</a> 和 <a href="https://volantis.js.org/">Volantis</a> 主题</p>]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>标签</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>归档</title>
       <link href="/archives/index.html"/>
       <url>/archives/index.html</url>
@@ -124,6 +213,28 @@
       <url>/links/index.html</url>
       
         <content type="html"><![CDATA[<h2 id="友情链接"><a href="#友情链接" class="headerlink" title="友情链接"></a>友情链接</h2><ul><li><a href="https://hexo.io/zh-cn/">Hexo</a> - 快速、简洁且高效的博客框架</li><li><a href="https://volantis.js.org/">Volantis</a> - A Wonderful Blog Framework</li></ul><h2 id="申请友链"><a href="#申请友链" class="headerlink" title="申请友链"></a>申请友链</h2><p>如果要交换友链，请在评论区留言：</p><ul><li>网站名称：</li><li>网站链接：</li><li>网站描述：</li><li>网站图标：</li></ul>]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>about</title>
+      <link href="/about/index.html"/>
+      <url>/about/index.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h2><p>你好，欢迎来到我的博客！</p><h3 id="个人简介"><a href="#个人简介" class="headerlink" title="个人简介"></a>个人简介</h3><ul><li>00后程序员</li><li>热爱技术与分享</li><li>喜欢记录生活点滴</li></ul><h3 id="联系方式"><a href="#联系方式" class="headerlink" title="联系方式"></a>联系方式</h3><ul><li>Email: <a href="mailto:&#x31;&#x38;&#55;&#x35;&#x39;&#x31;&#55;&#50;&#57;&#53;&#x30;&#x40;&#x31;&#51;&#x39;&#46;&#99;&#111;&#109;">18759172950@139.com</a></li><li>GitHub: <a href="https://github.com/cbsyy">https://github.com/cbsyy</a></li></ul><h3 id="博客介绍"><a href="#博客介绍" class="headerlink" title="博客介绍"></a>博客介绍</h3><p>这个博客主要用来：</p><ol><li>分享技术心得</li><li>记录学习笔记</li><li>分享生活感悟</li></ol><h3 id="感谢"><a href="#感谢" class="headerlink" title="感谢"></a>感谢</h3><p>感谢使用 <a href="https://hexo.io/">Hexo</a> 和 <a href="https://volantis.js.org/">Volantis</a> 主题</p>]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>标签</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
       
     </entry>
     
