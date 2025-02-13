@@ -32,6 +32,7 @@
 <link rel="preload" href="https://unpkg.com/volantis-static@0.0.1660614606622/media/fonts/UbuntuMono/UbuntuMono-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
   <!-- feed -->
+      <link rel="alternate" href="/atom.xml" title="Bingluover's Blog" type="application/atom+xml">
   <!-- 页面元数据 -->
   <title>llm面试 - Bingluover's Blog</title>
   <meta name="keywords" content="首页,分类,标签,归档,友链">
@@ -2081,7 +2082,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1739007854900),
+    lastupdate: new Date(1739439504260),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2110,6 +2111,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     search: {
       
 
+      
+        dataPath: (("/" || "/").endsWith("/") ? "/" || "/" : "//" || "/") + "content.json",
       
 
       
@@ -2584,6 +2587,11 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
+        <a class='prev' href='/2025/02/10/neo4j%E6%90%AD%E5%BB%BA/'>
+          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>neo4j搭建</p>
+          <p class='content'>构建neo4jhttps://blog.csdn.net/2301_77554343/article/details/135692019?ops_request_misc=%257B%2522r...</p>
+        </a>
+      
       
         <a class='next' href='/2025/02/08/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E8%AE%B0%E8%BD%BD/'>
           <p class='title'>知识图谱记载<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
@@ -2908,7 +2916,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
         
     
-    return volantis.js("");
+    return volantis.js("/js/search/hexo.js");
   }
 
   function loadSearchService() {
