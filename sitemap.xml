@@ -2,9 +2,45 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://cbsyy.github.io/categories/index-1.html</loc>
+    <loc>https://cbsyy.github.io/2025/02/13/%E8%B0%A6%E7%9A%84%E9%97%AE%E9%A2%98/</loc>
     
-    <lastmod>2025-02-13</lastmod>
+    <lastmod>2025-02-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cbsyy.github.io/2025/02/19/%E6%97%A5%E5%B8%B8%E8%AE%B0%E5%BD%95%E6%8A%80%E6%9C%AF/</loc>
+    
+    <lastmod>2025-02-19</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cbsyy.github.io/2025/02/12/Dify%E5%BA%94%E7%94%A8/</loc>
+    
+    <lastmod>2025-02-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cbsyy.github.io/2025/02/18/%E5%AD%A6%E4%B9%A0/</loc>
+    
+    <lastmod>2025-02-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cbsyy.github.io/2025/02/07/llm%E8%B5%84%E6%96%99/</loc>
+    
+    <lastmod>2025-02-14</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -29,34 +65,7 @@
   </url>
   
   <url>
-    <loc>https://cbsyy.github.io/2025/02/13/%E8%B0%A6%E7%9A%84%E9%97%AE%E9%A2%98/</loc>
-    
-    <lastmod>2025-02-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://cbsyy.github.io/2025/02/12/Dify%E5%BA%94%E7%94%A8/</loc>
-    
-    <lastmod>2025-02-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://cbsyy.github.io/2025/02/07/%E5%B7%A5%E4%BD%9C%E5%81%9A%E4%BA%8B/</loc>
-    
-    <lastmod>2025-02-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://cbsyy.github.io/2025/02/07/llm%E8%B5%84%E6%96%99/</loc>
     
     <lastmod>2025-02-13</lastmod>
     
@@ -218,15 +227,6 @@
   </url>
   
   <url>
-    <loc>https://cbsyy.github.io/2024/01/24/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</loc>
-    
-    <lastmod>2025-02-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://cbsyy.github.io/links/index.html</loc>
     
     <lastmod>2025-02-06</lastmod>
@@ -238,7 +238,7 @@
 
   <url>
     <loc>https://cbsyy.github.io/</loc>
-    <lastmod>2025-02-13</lastmod>
+    <lastmod>2025-02-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -246,35 +246,21 @@
   
   <url>
     <loc>https://cbsyy.github.io/tags/%E7%94%9F%E6%B4%BB/</loc>
-    <lastmod>2025-02-13</lastmod>
+    <lastmod>2025-02-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://cbsyy.github.io/tags/%E6%84%9F%E6%82%9F/</loc>
-    <lastmod>2025-02-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://cbsyy.github.io/tags/AI/</loc>
-    <lastmod>2025-02-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://cbsyy.github.io/tags/%E6%8A%80%E6%9C%AF/</loc>
-    <lastmod>2025-02-13</lastmod>
+    <lastmod>2025-02-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://cbsyy.github.io/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/</loc>
-    <lastmod>2025-02-13</lastmod>
+    <lastmod>2025-02-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -283,14 +269,7 @@
   
   <url>
     <loc>https://cbsyy.github.io/categories/%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F/</loc>
-    <lastmod>2025-02-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://cbsyy.github.io/categories/%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2/</loc>
-    <lastmod>2025-02-13</lastmod>
+    <lastmod>2025-02-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
